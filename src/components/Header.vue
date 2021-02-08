@@ -1,9 +1,10 @@
 <template>
   <div class="header">
     <div class="header-title" @click="onLanding">
-      Survey
+      Image
     </div>
     <div v-if="isLoggedIn" class="header-buttons">
+      <span class="header-button" @click="onUpload">Upload</span>
       <span class="header-button" @click="onSignOut">Sign out</span>
     </div>
     <div v-else class="header-buttons">
@@ -25,6 +26,9 @@ export default {
     },
     onLanding() {
       this.$router.push("/");
+    },
+    onUpload() {
+      this.$router.push("/upload");
     },
     async onSignOut() {
       await this.$store.dispatch("logout");

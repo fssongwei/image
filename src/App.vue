@@ -5,7 +5,7 @@
 
   <div id="app" v-else>
     <Header />
-    <router-view />
+    <router-view v-if="isRouterAlive" />
   </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
   name: "App",
   store,
   data() {
-    return { loading: true };
+    return { loading: true, isRouterAlive: true };
   },
   components: {
     Header,
@@ -29,6 +29,19 @@ export default {
   async created() {
     await this.$store.dispatch("validateToken");
     this.loading = false;
+  },
+  methods: {
+    reload() {
+      this.isRouterAlive = false;
+      this.$nextTick(function() {
+        this.isRouterAlive = true;
+      });
+    },
+  },
+  provide() {
+    return {
+      reload: this.reload,
+    };
   },
 };
 </script>

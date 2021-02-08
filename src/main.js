@@ -4,7 +4,7 @@ import VueRouter from "vue-router";
 import Landing from "./pages/Landing.vue";
 import Login from "./pages/Login.vue";
 import Register from "./pages/Register.vue";
-import Dashboard from "./pages/Dashboard.vue";
+import Upload from "./pages/Upload.vue";
 
 Vue.use(VueRouter);
 
@@ -12,7 +12,7 @@ const routes = [
   { path: "/", component: Landing },
   { path: "/login", component: Login },
   { path: "/register", component: Register },
-  { path: "/dashboard", component: Dashboard },
+  { path: "/upload", component: Upload },
 ];
 
 const router = new VueRouter({
