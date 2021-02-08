@@ -11,6 +11,7 @@
 import { mapGetters } from "vuex";
 import _ from "lodash";
 import ImageApi from "../utils/ImageApi";
+import { router } from "../main";
 
 export default {
   methods: {
@@ -21,7 +22,8 @@ export default {
         var formData = new FormData(); // 创建form对象
         formData.append("img", file);
         let imageUrl = (await ImageApi.post("/api/image", formData)).data;
-        console.log(imageUrl);
+        alert("success! " + imageUrl);
+        router.push("/");
       } catch (error) {
         let errMsg = _.get(error, "response.data") || error.toString();
         alert(errMsg);
